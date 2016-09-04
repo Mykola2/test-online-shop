@@ -1,14 +1,15 @@
 package ua.nickoh.domain;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by nickoh on 8/31/16.
  */
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class Category {
     private String title;
 
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    private Set<Product> products;
 
 
     public Category(String title) {
@@ -41,11 +42,11 @@ public class Category {
         this.id_category = id_category;
     }
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 }

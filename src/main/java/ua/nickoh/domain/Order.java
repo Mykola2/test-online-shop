@@ -3,6 +3,7 @@ package ua.nickoh.domain;
 import ua.nickoh.user.User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,8 +11,8 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "\"order\"")
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

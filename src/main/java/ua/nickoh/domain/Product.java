@@ -1,13 +1,15 @@
 package ua.nickoh.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by nickoh on 8/31/16.
  */
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_product;
@@ -25,6 +27,12 @@ public class Product {
     @JoinColumn(name = "id_category")
     private Category category;
 
+    public Product(String title, String description, Integer price, Category category) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
 
     public Integer getPrice() {
         return price;

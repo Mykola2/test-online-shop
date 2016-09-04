@@ -3,6 +3,8 @@ package ua.nickoh.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Order;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @Entity
@@ -24,6 +26,9 @@ public class User implements java.io.Serializable {
 
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     @JsonIgnore
     private String password;
@@ -97,6 +102,13 @@ public class User implements java.io.Serializable {
     }
 
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }
 
 
